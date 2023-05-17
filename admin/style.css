@@ -125,3 +125,44 @@ select {
 
 }
 
+.contenedorMensaje{
+    display:  flex;
+    justify-content: center;
+    width: 100%;
+    margin-left: auto;
+    height: 70px;   
+}
+
+.repetidoError,
+.realizado,
+.llenarCampos,
+.noExisteError {
+    margin:  15px 0px;
+}
+
+.llenarCampos::after,
+.noExisteError::after,
+.repetidoError::after,
+.realizado::after {
+    background-color: red;
+    font-size: 17px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.realizado::after {
+    content: 'Realizado';
+    background-color: green;
+}
+
+.repetidoError::after {
+    content: 'Este elemento ya existe';
+}
+
+.llenarCampos::after {
+    content: 'Por favor compruebe que toda la informacion este diligenciada';
+}
+
+.noExisteError::after {
+    content: 'Este elemento no existe';
+}
