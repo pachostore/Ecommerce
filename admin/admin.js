@@ -8,7 +8,7 @@ function obtenerAlmacenamientoLocal(llave){
 }
 
 let productos = obtenerAlmacenamientoLocal('productos') || [];
-let mensaje = document.getElementById('mensaje')
+let mensaje = document.getElementById('mensaje') 
 
 // Añadir un producto 
 const  añadirProducto = document.getElementById('productoAñadir')
@@ -28,13 +28,34 @@ document.getElementById("botonAñadir").addEventListener("click", function (even
     if (productoAñadir == '' || valorAñadir == '' || existenciasAñadir == '' ||
         añadirImagen == ''){
         mensaje.classList.add('llenarCampos')
+        setTimeout(() => {mensaje.classList.remove('llenarCampos')}, 2500)
+        van = false
 
     }
+    else{
+        for (let i=0; i< productos.length; i++){
+            if( productos[i].nombre == productoAñadir){
+                mensaje.classList.add('repeditoError')
+                setTimeout(() => {mensaje.classList.remove('repetidoError')}, 2500)
+                van = false
+            }
+        }
+    }
 
-    productos.push ({
-        nombre: productoAñadir,
-        valor: valorAñadir,
-        exixtencias: existenciasAñadir,
-        urlImagen: añadirImagen
-    })
+    if (van == true){
+        productos.push ({
+            nombre: productoAñadir,
+            valor: valorAñadir,
+            exixtencias: existenciasAñadir,
+            urlImagen: añadirImagen
+        })
+        mensaje.classList.add('realizado')
+        setTimeout(() => {
+            mensaje.classList.remove('repetidoError')
+            window.location.reload()
+        }, 1500)
+
+    }
+    guardarAlmacenamientoLocal('productos',productos)
+    
 })
