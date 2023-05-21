@@ -59,3 +59,22 @@ document.getElementById("botonAñadir").addEventListener("click", function (even
     guardarAlmacenamientoLocal('productos',productos)
     
 })
+
+// Editar
+const productoEd = document.getElementById('productoEditar')
+const atributoEd = document.getElementById('atributoEditar')
+const nuevoAtributoEd = document.getElementById('nuevoAtributo')
+
+document.getElementById("botonEditar").addEventListener("click", function (event) {
+    event.preventDefault()
+    let productoEditar = productoEd.value
+    let atributoEditar = atributoEd.value
+    let nuevoAtributo = nuevoAtributoEd.value
+    let van = false
+    if (productoEditar == '' || atributoEditar == '' || nuevoAtributo == '') {
+        mensaje.classList.add('llenarCampos')
+        setTimeout(() => {
+            
+        }, timeout);
+    }
+})
